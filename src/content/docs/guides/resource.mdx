@@ -1,13 +1,44 @@
 ---
 title: Resource
 ---
-
+import { Image } from 'astro:assets';
+import resource from '../../../assets/resource-command.png'
 import { Aside, Code, FileTree } from '@astrojs/starlight/components';
 
 Resource are full CRUD interfaces for eloquent models and primary feature of Xumina.
 
 ## Creating Resource
 
-Run following command to create new resource. It will prompt you to select your model.
+Run following command to create new resource.
 
 <Code lang="sh" code={`php artisan xumina:resource`} />
+
+It will prompt you to select your model.
+
+<Image src={resource} alt="resource command screenshot" />
+
+Let's say you select the Category model, then the command will create following files
+
+<FileTree>
+
+- app
+  - Xumina
+    - Admin
+	  - Controllers
+		- CategoryController.php
+	  - Pages
+	    - Categories
+		  - CreateCategory.php
+		  - EditCategory.php
+		  - ListCategory.php
+		  - ViewCategory.php
+	  - Resources
+	    - Category.php
+</FileTree>
+
+`CategoryController` is exactly like laravel default resource controller with all the same methods (`index`, `show`, `create`, `store`, `edit`, `update`, `destroy`). The four resource page that are created are tied to these 7 methods.
+
+- CreateResource - [`create`, `store`]
+- EditResource - [`edit`, `update`]
+- ListResource - [`index`]
+- ViewResource - [`show`, `destroy`]

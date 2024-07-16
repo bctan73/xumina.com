@@ -2,7 +2,8 @@
 title: Panel
 description: Docs for xumina panel.
 ---
-
+import { Image } from 'astro:assets';
+import panel from '../../../assets/panel-command.png'
 import { Aside, Code, FileTree } from '@astrojs/starlight/components';
 
 A panel is a module that encapsulates a section of your whole app, e.g admin section of your app, blog section etc. Panel are consists of page, controller and layout. Panel have a dashboard page by default.
@@ -11,15 +12,20 @@ A panel is a module that encapsulates a section of your whole app, e.g admin sec
 
 ## Creating Panel
 
-Run following command to create new panel. It will prompt you for panel name and if you want to scaffold authentication pages for this panel.
-
+Run following command to create new panel.
 <Code lang="sh" code={`php artisan xumina:panel`} />
+
+It will prompt you for panel name
+<Image src={panel} alt="panel command option" />
 
 Newly created panel will be available at `app/Xumina/` directory.
 
 <FileTree>
 
 - app
+  - Providers
+    - Xumina
+	  - PanelServiceProvider.php
   - Xumina
     - PanelName
 	  - Controllers
