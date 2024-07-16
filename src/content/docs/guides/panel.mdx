@@ -28,3 +28,15 @@ Newly created panel will be available at `app/Xumina/` directory.
 	    - Dashboard.php
 
 </FileTree>
+
+## Panel route prefix
+
+To change route prefix for a panel call prefix method on the panel class inside panel provider register method
+
+<Code lang="php" code=`
+    public function register(): void
+    {
+        $this->panel = app('xumina')->registerPanel('App');
+        $this->panel->prefix('/');
+    }
+`

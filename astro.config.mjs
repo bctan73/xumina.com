@@ -14,6 +14,9 @@ export default defineConfig({
 				discord: 'https://discord.com/invite/Bjtmud4HZF',
 				github: 'https://github.com/Hasnayeen/xumina',
 			},
+			editLink: {
+				baseUrl: 'https://github.com/hasnayeen/xumina.com/edit/main/',
+			},
 			sidebar: [
 				{
 					label: 'Introduction',
