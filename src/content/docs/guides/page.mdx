@@ -1,3 +1,27 @@
 ---
 title: Page
+description: Docs for page
 ---
+
+import { Code } from '@astrojs/starlight/components';
+
+A page corresponds to a page in the app where you define the main content. A resource page contains one main get route and may contains other routes (post, put, delete).
+
+## Defining content
+
+The main content of the page is defined in the outline method.
+
+<Code lang="php" code={`
+    // CreateCategory.php
+    public function outline(): array
+    {
+        return [
+            Form::make('category')
+                ->fields([])
+        ];
+    }
+`} />
+
+You can use all the available [components](/components) that xumina provides to set your page content anyway you like. You have full control over the structure of your content. Check [content](/guides/content) for more info.
+
+Every page use the layout defined in panel. Check [Layout](/guides/layout) page for customizing layout.

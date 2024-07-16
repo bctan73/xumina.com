@@ -36,6 +36,7 @@ export default defineConfig({
 						{ label: 'Panel', link: '/guides/panel/' },
 						{ label: 'Resource', link: '/guides/resource/' },
 						{ label: 'Page', link: '/guides/page/' },
+						{ label: 'Layout', link: '/guides/layout/' },
 						{ label: 'Content', link: '/guides/content/' },
 					],
 				},
