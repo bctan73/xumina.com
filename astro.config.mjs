@@ -38,6 +38,7 @@ export default defineConfig({
 						{ label: 'Page', link: '/guides/page/' },
 						{ label: 'Layout', link: '/guides/layout/' },
 						{ label: 'Content', link: '/guides/content/' },
+						{ label: 'Themes', link: '/guides/themes/' },
 					],
 				},
 				{

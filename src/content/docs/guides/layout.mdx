@@ -2,3 +2,63 @@
 title: Layout
 description: Docs for layout
 ---
+import { Image } from 'astro:assets';
+import layout from '../../../assets/default-layout.png'
+import { Code } from '@astrojs/starlight/components';
+
+The Layout class is responsible for defining the structure and layout of pages in your application. It provides a flexible and composable way to build complex user interfaces by arranging various [block](/components/block) components.
+
+## Default Layout
+
+Xumina by default provides a default layout that looks like following with default theme
+
+<Image src={layout} alt="default layout screenshot" />
+
+## Changing Layout
+
+All pages in a panel use the same layout and it can be set via panel `layout` method
+
+<Code lang="php" code={`
+    public function boot(): void
+    {
+        $this->panel->layout(DefaultLayout::class);
+    }
+`} />
+
+## Creating new layout
+
+If you want to customize the layout then create a new layout by running the following command
+
+<Code lang="sh" code={`php artisan xumina:layout`} />
+
+## Customizing layout
+
+The outline method is where you define the structure of your layout. It should return an array of [block](/components/block) component definitions:
+
+<Code lang="php" code={`public function outline(): array
+{
+    return [
+        Container::make()
+            ->class('grid gap-4')
+            ->items([
+                SideBar::make(),
+                TopBar::make(),
+                Content::make(),
+            ])
+    ];
+}`} />
+
+## Using block components
+
+Xumina provides several built-in block components for common layout elements:
+
+- [Container](/components/block/container): A wrapper component for grouping other components.
+- [SideBar](/components/block/sidebar): For creating a sidebar navigation.
+- [TopBar](/components/block/topbar): For creating a top navigation bar.
+- [Content](/components/block/content): For defining the main content area.
+- [Breadcrumb](/components/block/breadcrumb): For adding breadcrumb navigation.
+- [PageHeader](/components/block/page-header): For adding a page title and actions to your page.
+- [PageFooter](/components/block/page-footer): Area for adding any footer content.
+
+Visit the comoponent pages to learn more about them.
+

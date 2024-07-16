@@ -1,0 +1,64 @@
+---
+title: Themes
+description: Docs for customizing app with themes
+---
+import { Code } from '@astrojs/starlight/components';
+
+Xumina provides a powerful and flexible theming system that allows you to customize the look and feel of your application. Themes in Xumina are defined using PHP classes, making it easy to create, modify, and apply custom color schemes and styles.
+
+## Default Themes
+
+Xumina comes with several pre-built themes out of the box. These themes provide a variety of color schemes to suit different tastes and design requirements.
+
+## Changing Theme
+
+To apply a theme to your Xumina application, use the theme() method in your panel's boot() method:
+
+<Code lang="php" code={`public function boot(): void
+{
+    $this->panel->layout(DefaultLayout::class)
+        ->theme(\\Hasnayeen\\Xumina\\Themes\\DefaultTheme::class);
+}`} />
+
+Replace DefaultTheme::class with the theme of your choice.
+
+## Custom theme
+
+Xumina provides an Artisan command to quickly generate a new theme:
+
+<Code lang="sh" code={`php artisan xumina:theme`} />
+
+## Theme Structure
+
+A Xumina theme class extends the BaseTheme class and implements the Theme interface.
+
+<Code lang="php" code={`<?php
+
+namespace App\Xumina\Themes;
+
+use Hasnayeen\Xumina\Themes\BaseTheme;
+use Hasnayeen\Xumina\Contracts\Theme;
+
+class MyCustomTheme extends BaseTheme implements Theme
+{
+    // Light theme colors
+    public string $background = '0 0% 100%';
+    public string $foreground = '222.2 47.4% 11.2%';
+    // ... other light theme colors ...
+
+    // Dark theme colors
+    public string $backgroundDark = '224 71% 4%';
+    public string $foregroundDark = '213 31% 91%';
+    // ... other dark theme colors ...
+}`} />
+
+## Color Definition
+
+Colors in Xumina themes are defined using the HSL (Hue, Saturation, Lightness) color model. Each color is represented as a string with three space-separated values:
+
+<Code lang="php" code={`public string $primary = '222.2 47.4% 11.2%';`} />
+
+- The first value is the hue (0-360)
+- The second value is the saturation (0-100%)
+- The third value is the lightness (0-100%)
+

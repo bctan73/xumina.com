@@ -1,3 +1,65 @@
 ---
 title: Create Record
+description: Docs for resource create page
 ---
+import { Aside, Code } from '@astrojs/starlight/components';
+
+The Create Page in Xumina is a specialized page type designed to facilitate the creation of new records for a specific resource.
+
+## Create Form
+
+As usual the structure of page are defined in `outline` method. Create page adds a form component when created by `xumina:resource` command. 
+
+<Code lang="php" code={`
+public function outline(): array
+{
+    return [
+        Form::make('category')
+            ->fields([
+            ])
+    ];
+} 
+`} />
+
+<Aside>The name of the form is important as it is used to save the form data. The name should be unique and match with the controller `store` method</Aside>
+
+inside the `fields` method form fields are added. Xumina provides following form field componets
+
+- [Input](/components/form/input)
+- [Checkbox](/components/form/checkbox)
+- [Switch](/components/form/switch)
+- [Radio](/components/form/radio)
+- [Select](/components/form/select)
+- [FileUpload](/components/form/file-upload)
+- [DatePicker](/components/form/date-picker)
+- [Textarea](/components/form/testarea)
+
+## Validation
+
+Xumina uses laravel validation to validate form fields. Validation rules are defined via `rules` method of a field component using regular laravel validation rules syntax.
+
+<Code lang="php" code={`
+Input::make('name')
+    ->rules('required|string|max:255'),
+Input::make('slug')
+    ->rules(['required', 'string', 'max:255']),
+`} />
+
+Both string and array format are supported.
+
+## Route Definitions
+
+The `routes` method defines the routes associated with this page:
+
+<Code lang="php" code={`public static function routes(): array
+{
+    return [
+        Route::get('categories/create', [CategoryController::class, 'create'])
+            ->name('categories.create'),
+        Route::post('categories', [CategoryController::class, 'store'])
+            ->name('categories.store'),
+    ];
+}`} />
+
+This method typically defines a GET route for displaying the form and a POST route for handling form submission.
+
