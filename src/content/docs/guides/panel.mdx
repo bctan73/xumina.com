@@ -46,3 +46,15 @@ To change route prefix path for a panel, call `prefix` method on the panel class
         $this->panel->prefix('/');
     }`}
 />
+
+## Authorization
+
+You can control access to an entire panel based on custom logic via the panel `authorize` method.
+
+<Code lang="php" code={`    public function boot(): void
+    {
+        $this->panel
+            ->authorize(fn($user) => $user->isAdmin())
+    }
+`} />
+

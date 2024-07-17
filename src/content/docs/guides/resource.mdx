@@ -44,3 +44,14 @@ Let's say you select the Category model, then the command will create following 
 - [ListCategory](/resource/list-record) - [`index`]
 - [ViewCategory](/resource/view-record) - [`show`, `destroy`]
 
+## Authorization
+
+Resource page use laravel policy class for authorization. Create a policy class for your resource. 
+
+Controller methods are mapped to policy class methods in following way
+
+- `index` => `viewAny`
+- `show` => 'view'
+- `store` => `create`
+- `update` => `update`
+- `destroy` => `delete`
