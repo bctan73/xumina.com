@@ -37,7 +37,7 @@ Newly created panel will be available at `app/Xumina/` directory.
 
 ## Panel route prefix
 
-To change route prefix path for a panel, call `prefix` method on the panel class inside panel provider register method
+To change route prefix path for a panel, call `prefix` method on the panel class inside panel provider `register` method
 
 <Code lang="php" code={`
     public function register(): void
@@ -58,3 +58,23 @@ You can control access to an entire panel based on custom logic via the panel `a
     }
 `} />
 
+## Root Page
+
+By default a dashboard page is created when you create a panel and it's the root page of that panel. When you visit a panel you'll land on the dashboard page. You can customize which page should be treated as root by using `rootPage` method
+
+<Code lang="php" code={`
+    public function boot(): void
+    {
+        $this->panel
+            ->layout(DefaultLayout::class)
+            ->rootPage(\\My\\Custom\\Page::class);
+    }
+`} />
+
+## Layout
+
+By default the `DefaultLayout` is used for panel layout, but you can use a custom layout via `layout` method. More on [Layout Docs](/guides/layout/#changing-layout)
+
+## Theme
+
+By default the `DefaultTheme` is used, to use a different theme use `theme` method. More on [Theme Docs](/guides/themes/#changing-theme)

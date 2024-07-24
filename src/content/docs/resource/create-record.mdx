@@ -4,11 +4,11 @@ description: Docs for resource create page
 ---
 import { Aside, Code } from '@astrojs/starlight/components';
 
-The Create Page in Xumina is a specialized page type designed to facilitate the creation of new records for a specific resource.
+The Create Page in Xumina is a specialized page designed to facilitate the creation of new records for a specific resource.
 
 ## Create Form
 
-As usual the structure of page are defined in `outline` method. Create page adds a form component when created by `xumina:resource` command. 
+The structure of the page are defined in `outline` method. Create page adds a form component when created via `xumina:resource` command. 
 
 <Code lang="php" code={`
 public function outline(): array
@@ -21,9 +21,9 @@ public function outline(): array
 } 
 `} />
 
-<Aside>The name of the form is important as it is used to save the form data. The name should be unique and match with the controller `store` method</Aside>
+<Aside type="caution">The name of the form is important as it is used to save the form data. The name should be unique and match with the controller `store` method</Aside>
 
-inside the `fields` method form fields are added. Xumina provides following form field componets
+Form fields are added inside the `fields` method. Xumina provides following form field components
 
 - [Input](/components/form/input)
 - [Checkbox](/components/form/checkbox)

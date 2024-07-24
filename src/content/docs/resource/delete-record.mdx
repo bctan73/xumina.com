@@ -1,3 +1,22 @@
 ---
 title: Delete Record
+description: Docs for deleting resource
 ---
+import { Code } from '@astrojs/starlight/components';
+
+Record deletion does not have a dedicated page but can be deleted from [View Record](/resource/view-record) and [Edit Record](/resource/edit-record) page.
+
+In view page a delete action button exists on page header section to delete the associated record. A confirmation dialog will be open on clicking the button.
+
+## After callback
+
+To run some code after a record has been deleted, you can chain `after` method in controller and pass a closure to execute after record has been deleted.
+
+<Code lang="php" code={`
+    public function destroy(Category $category, ViewCategory $page)
+    {
+        return $page
+            ->delete($category)
+            ->after(fn () => SendMailToAdmin::dispatch());
+    }
+`} />

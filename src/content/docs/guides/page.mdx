@@ -31,7 +31,7 @@ Every page use the layout defined in panel. Check [Layout](/guides/layout) page 
 Resource page use laravel native policy class for [resource authorization](/guides/resource#authorization). For custom page or to override a resource page authorization logic, add a `authorize` method to your page. It should return a boolean value.
 
 <Code lang="php" code={`
-    public function authorize()
+    public function authorize(): bool
     {
         return auth()->user()->can('access-custom-page');
     }`} />

@@ -50,8 +50,21 @@ Resource page use laravel policy class for authorization. Create a policy class 
 
 Controller methods are mapped to policy class methods in following way
 
-- `index` => `viewAny`
-- `show` => 'view'
-- `store` => `create`
-- `update` => `update`
-- `destroy` => `delete`
+- `index`: `viewAny`
+- `show`: `view`
+- `store`: `create`
+- `update`: `update`
+- `destroy`: `delete`
+
+You can also apply authorization logic inside controller methods.
+
+<Code lang="php" code={`
+    public function index(Request $request, ListCategory $page): Response
+    {
+        $this->authorize(// your code);
+
+        return Inertia::render(Xumina::getInertiaPath($request->route()->getName()), [
+            'data' => $page->data(),
+        ]);
+    }
+`} />

@@ -12,15 +12,32 @@ Xumina comes with several pre-built themes out of the box. These themes provide 
 
 ## Changing Theme
 
-To apply a theme to your Xumina application, use the theme() method in your panel's boot() method:
+To apply a theme to your panel, use the `theme` method inside your panel's `boot` method:
 
 <Code lang="php" code={`public function boot(): void
 {
-    $this->panel->layout(DefaultLayout::class)
+    $this->panel
+        ->layout(DefaultLayout::class)
         ->theme(\\Hasnayeen\\Xumina\\Themes\\DefaultTheme::class);
 }`} />
 
 Replace DefaultTheme::class with the theme of your choice.
+
+## Theme customization
+
+You can also customize the selected theme by passing a closure to the theme method. The method has one parameter which is the current theme 
+
+<Code lang="php" code={`
+    $this->panel
+        ->layout(DefaultLayout::class)
+        ->theme(
+            \\Hasnayeen\\Xumina\\Themes\\Summer::class,
+            fn(Theme $theme) => $theme->muted(49, 60, 75)
+                ->mutedForeground(9, 50, 35),
+        );    
+`} />
+
+Each function takes three parameter: `float hue`, `float saturation`, `float lightness`
 
 ## Custom theme
 
@@ -30,7 +47,7 @@ Xumina provides an Artisan command to quickly generate a new theme:
 
 ## Theme Structure
 
-A Xumina theme class extends the BaseTheme class and implements the Theme interface.
+A Xumina theme class extends the `BaseTheme` class and implements the `Theme` interface.
 
 <Code lang="php" code={`<?php
 
